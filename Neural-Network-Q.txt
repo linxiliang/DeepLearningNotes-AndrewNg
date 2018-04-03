@@ -1,0 +1,21 @@
+1. Why does Neural network work well? Isn't neutral network just trying to fit a flexible function of x onto y? If so, why better than fitting a flexible function? 
+
+2. What does the hidden layers represent? Black box? or mathematically what they are? Filtering noises? Balancing bias and variance? 
+
+3. What's the advantages of NN compared with tree models or other similar models? 
+
+4. Why are the learning rates different (flexibility of function???) for NN and other models?
+
+5. NN -- two advantages (1) scale of computation (speed), (2) scale of data?
+
+6. NN and the resemblance to human brain function? Fast rate for recursion?
+
+7. How do we manage memory in computing NN since hidden layers are large matrixes if the training sample is large? 
+
+8. Can we simulate X, and then do Reinforcement learning? For example, for a self-driving car, we may need less accidents to learn about how to drive more safely. 
+
+9. Can we not learning from scratch and generalize knowledge across algorithms??? This is the big challenge.
+
+10. For hyper parameters, cannot we use learning systems to learn about these hyper parameters? 
+
+
