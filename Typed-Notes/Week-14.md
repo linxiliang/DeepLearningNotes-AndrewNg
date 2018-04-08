@@ -49,7 +49,7 @@ Define a new variable, $C$ for memory cell. At time $0$, $C^{<0>} = a^{<0>}$. Th
 * Create a proposal: $\tilde{C}^{<t>} = tanh(W_c [Γ_r * C^{<t-1>}, X^{<t>}] + b_c)$
 * Create a filter variable/gate: $Γ_u = σ(W_u [C^{<t-1>}, X^{<t>}] + b_u)$
 * Create a relevance filter variable/gate: $Γ_r = σ(W_r [C^{<t-1>}, X^{<t>}] + b_r)$
-* Update with $C^{<t>}$ probability $Γ_u$: $C^{<t>} = Γ_u * \tilde{C}^{<t>} + (1-Γ_u) * C^{<t-1>}$
+* Update with $C^{<t>}$ probability $Γ_u$: $C^{<t>} = Γ_r * \tilde{C}^{<t>} + (1-Γ_r) * C^{<t-1>}$
 where * is the element-wise multiplication. Given the memory, it allows for long-term dependency in words.
 
 ###### Long Short Term Memory (LSTM)
@@ -59,9 +59,8 @@ It's a more general version of the GRU.
 * Create a update filter variable/gate: $Γ_u = σ(W_u [C^{<t-1>}, X^{<t>}] + b_u)$
 * Create a forget filter variable/gate: $Γ_f = σ(W_f [C^{<t-1>}, X^{<t>}] + b_f)$
 * Create an output filter variable/gate: $Γ_o = σ(W_o [C^{<t-1>}, X^{<t>}] + b_o)$
-* Update with $C^{<t>}$ probability $Γ_u$: $C^{<t>} = Γ_u * \tilde{C}^{<t>} + Γ_f * C^{<t-1>}$
-* In computing activation: $a^{<t>} = Γ_0 * tanh(C^{<t>})
-where * is the element-wise multiplication. Note,  $C^{<t-1>}$ will affect the gate values in LSTM.
+* Update with $C^{<t>}$ probability $Γ_u$: $C^{<t>} = Γ_o * \tilde{C}^{<t>} + Γ_f * C^{<t-1>}$
+* In computing activation: $a^{<t>} = Γ_0 * tanh(C^{<t>})$ where * is the element-wise multiplication. Note,  $C^{<t-1>}$ will affect the gate values in LSTM.
 
 ###### Bidirectional RNN (BRNN, cannot be used in real time in standard form)
 In Bidirectional RNN, we add additional activation unit which flow backward through the time sequence. The calculation is done as follows:
@@ -73,7 +72,7 @@ The output layer is output as follows:
 $$\hat{y}^{<t>} = f(\vec{a}^{<t-1>}, \overset{\leftarrow}{a}^{<t+1>}, x^{<t>})$$
 
 ###### Deep RNN
-For deep RNN, we include multiple activation layers for each sequence of the input (deep in vertical dimension (not along the sequence)). 
+For deep RNN, we include multiple activation layers for each sequence of the input (deep in vertical dimension (not along the sequence)).
 
 ### [I still don't understand why the data has to be processed sequentially. Why not process the data, and determine where to look at next?]
 
